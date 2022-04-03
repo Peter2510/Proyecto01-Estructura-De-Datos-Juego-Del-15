@@ -583,7 +583,7 @@ struct matrizOrtogonal {
 	/*MOSTRAR EL TABLERO GENERADO*/
 
 	void mostarTablero() {
-
+		
 		if (!isEmpty()) {
 
 			nodoDeCabecera* tmp1 = cabeza->primero;
@@ -591,16 +591,18 @@ struct matrizOrtogonal {
 			//nodoValor* constante = c->primero->Columna->primero->abajo;
 			nodoValor* constante = cabeza->primero->Columna->primero->abajo;
 			cout << "\n\n";
+			
 			tmp2 = imprimirLinea(tmp1->Columna->primero);
 			cout << "\n";
 
 			while (constante != NULL) {
 
 				//if (tmp2 == NULL) {
-
+			
 				tmp2 = imprimirLinea(constante);
 				constante = constante->abajo;
 				cout << "\n";
+			
 
 				//}
 
@@ -671,7 +673,7 @@ struct matrizOrtogonal {
 	void moverPieza(int x, int y, matrizOrtogonal* m) {
 		int ejex = x - 1;
 		int ejey = y - 1;
-
+		
 		if (!isEmpty()) {
 
 			nodoDeCabecera* tmp1 = m->cabeza->primero;

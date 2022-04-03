@@ -30,6 +30,7 @@ int main() {
 			cout << "\nSe inicia partida " << endl;
 			cout << "Ingresa tu nombre\n";
 			cin >> nombre;
+			cout << "\n";
 			if(contadorJugadorX==0){
 				matrizNombres = crearJugador(contadorJugadorX, 0, nombre);
 				contadorJugadorX++;
@@ -47,6 +48,8 @@ int main() {
 			cin >> llenado;
 			cout << "\n";
 
+			cout << "Las posiciones se ingresan (fila,columna) iniciando x=1 y y=1\n\n";
+
 			if (llenado == 1) {
 				
 				int moverX;
@@ -61,6 +64,7 @@ int main() {
 				cout << "\n";
 				
 				do {
+					cout << "\nLas posiciones se ingresan (fila,columna) iniciando x=1 y y=1\n\n";
 					cout << "Posicion X a mover: ";
 					cin >> moverX;
 
@@ -76,11 +80,28 @@ int main() {
 
 			}
 			else if (llenado == 2) {
+				int moverX;
+				int moverY;
+
 				cout << "Ingresa el alto del tablero" << endl;
 				cin >> alto;
 				cout << "Ingresa el ancho del tablero" << endl;
 				cin >> ancho;
 				matrizAleatoria = crearMatrizAleatoria(alto,ancho);
+				cout << "\n";
+
+				do {
+					cout << "\nLas posiciones se ingresan (fila,columna) iniciando x=1 y y=1\n\n";
+
+					cout << "Posicion X a mover: ";
+					cin >> moverX;
+
+					cout << "Posicion Y a mover: ";
+					cin >> moverY;
+
+					mover(moverX, moverY, matrizAleatoria);
+
+				} while (moverX != 88);
 			}
 
 									

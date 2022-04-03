@@ -54,6 +54,7 @@ int main() {
 				
 				int moverX;
 				int moverY;
+				string opcion;
 
 				cout << "Ingresa el alto del tablero" << endl;
 				cin >> alto;
@@ -65,23 +66,29 @@ int main() {
 				
 				do {
 					cout << "\nLas posiciones se ingresan (fila,columna) iniciando x=1 y y=1\n\n";
-					cout << "Posicion X a mover: ";
+					
+					cout << "Posicion fila a mover: ";
 					cin >> moverX;
 
-					cout << "Posicion Y a mover: ";
+					cout << "Posicion columna a mover: ";
 					cin >> moverY;
 					
-					mover(moverX, moverY, matrizManual);
+					cout << "\n\nLos movimientos pueden ser: arriba, abajo, derecha e izquierda\n";
+					cout << "Movimiento a realizar: ";
+					cin >> opcion;
+					
+					mover(moverX, moverY,opcion, matrizManual);
 
 				} while (moverX!=88);
 
-				
-				
+								
 
 			}
 			else if (llenado == 2) {
 				int moverX;
 				int moverY;
+				string opcion;
+				
 
 				cout << "Ingresa el alto del tablero" << endl;
 				cin >> alto;
@@ -93,13 +100,18 @@ int main() {
 				do {
 					cout << "\nLas posiciones se ingresan (fila,columna) iniciando x=1 y y=1\n\n";
 
-					cout << "Posicion X a mover: ";
+					cout << "Posicion fila a mover: ";
 					cin >> moverX;
 
-					cout << "Posicion Y a mover: ";
+					cout << "Posicion columna a mover: ";
 					cin >> moverY;
+					
+					
+					cout << "\n\nLos movimientos pueden ser: arriba, abajo, derecha e izquierda\n";
+					cout << "Movimiento a realizar: ";
+					cin >> opcion;
 
-					mover(moverX, moverY, matrizAleatoria);
+					mover(moverX, moverY, opcion, matrizAleatoria);
 
 				} while (moverX != 88);
 			}

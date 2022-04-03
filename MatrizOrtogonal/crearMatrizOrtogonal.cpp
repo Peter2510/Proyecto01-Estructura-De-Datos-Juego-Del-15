@@ -69,6 +69,62 @@ matrizOrtogonal* crearMatrizAleatoria(int alto, int ancho) {
 
 }
 
-void mover(int x, int y,matrizOrtogonal* m) {
-	m->moverPieza(x,y,m);
+void mover(int x, int y,string opcion, matrizOrtogonal* m) {
+	
+	nodoValor* valorAMover;
+	nodoValor* tmp;
+	
+	valorAMover = m->moverPieza(x,y,m);
+	tmp = m->moverPieza(x, y, m);
+	
+	
+
+	cout << "Numero a mover: " << valorAMover->numero<<"\n";
+
+	// SI X ESTA ABAJO
+	if (opcion == "abajo") {
+		
+		if (valorAMover->abajo->nombre == "X") {
+			cout << "Si cambio";
+			valorAMover->nombre = "X";
+			valorAMover->abajo->numero = tmp->numero;
+			valorAMover->abajo->nombre = "a";
+			m->mostarTablero();
+		}
+		else {
+			cout << "NO cambio";
+		}
+
+	}
+	// SI X ESTA ARRIBA
+	else if (opcion == "arriba") {
+		
+		if (valorAMover->arriba->nombre == "X") {
+			cout << "Si cambio";
+		}
+		else {
+			cout << "NO cambio";
+		}
+	
+	// SI X ESTA A LA DERECHA
+	}else if(opcion == "derecha") {
+	
+		if (valorAMover->derecha->nombre == "X") {
+			cout << "Si cambio";
+		}
+		else {
+			cout << "NO cambio";
+		}
+	}
+	// SI X ESTA A LA DERECHA
+	else if (opcion == "izquierda") {
+
+		if (valorAMover->izquierda->nombre == "X") {
+			cout << "Si cambio";
+		}
+		else {
+			cout << "NO cambio";
+		}
+
+	}
 }

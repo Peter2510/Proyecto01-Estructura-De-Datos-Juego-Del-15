@@ -10,9 +10,9 @@ using namespace std;
 
 struct nodoValor {
 
-	int numero,x,y,punteo=0;
+	int numero, x, y, punteo = 0;
 	string nombre;
-	
+
 	//Apuntadores entre si
 	nodoValor* arriba;
 	nodoValor* abajo;
@@ -71,7 +71,7 @@ struct listaEnlazadaVertical {
 
 	}
 
-	
+
 
 	void insertar(nodoValor* valor) {
 
@@ -80,7 +80,7 @@ struct listaEnlazadaVertical {
 
 		}
 		else {
-			if (valor->y<primero->y) {
+			if (valor->y < primero->y) {
 				insertarAlFrente(valor);
 			}
 			else if (valor->y > ultimo->y) {
@@ -146,7 +146,7 @@ struct listaEnlazadaHorizontal {
 		}
 	}
 
-	
+
 
 	void insertar(nodoValor* valor) {
 
@@ -155,10 +155,10 @@ struct listaEnlazadaHorizontal {
 
 		}
 		else {
-			if (valor->x< primero->x) {
+			if (valor->x < primero->x) {
 				insertarAlFrente(valor);
 			}
-			else if (valor->x> ultimo->x) {
+			else if (valor->x > ultimo->x) {
 				insertarAlFinal(valor);
 			}
 			else {
@@ -197,7 +197,7 @@ struct listaEnlazadaHorizontal {
 
 	}
 
-	
+
 
 };
 
@@ -232,7 +232,7 @@ struct NodosCabeceras {
 		ultimo = NULL;
 	}
 
-		
+
 
 	void insertar(nodoDeCabecera* valor) {
 
@@ -293,26 +293,26 @@ struct NodosCabeceras {
 
 	}
 
-	
+
 
 	bool existeX(int x) {
 		if (isEmpty()) {
-		//	cout << "no existe" << endl;
+			//	cout << "no existe" << endl;
 			return false;
 
 		}
 		else {
 			nodoDeCabecera* temporal;
 			temporal = primero;
-			while (temporal!=NULL) {
-				if (temporal->x==x) {
-			//		cout<<"existe" << endl;
+			while (temporal != NULL) {
+				if (temporal->x == x) {
+					//		cout<<"existe" << endl;
 					return true;
-					
+
 
 				}
-				else if (temporal->siguiente==NULL) {
-		//			cout << "no se encontro" << endl;
+				else if (temporal->siguiente == NULL) {
+					//			cout << "no se encontro" << endl;
 					return false;
 				}
 				temporal = temporal->siguiente;
@@ -321,17 +321,17 @@ struct NodosCabeceras {
 	}
 
 	nodoDeCabecera* buscarNodoCabecera(int x) {
-		if(existeX(x)){
+		if (existeX(x)) {
 			nodoDeCabecera* tmp1;
 			tmp1 = primero;
 			while (tmp1->x != x) {
 				tmp1 = tmp1->siguiente;
 			}
-	//cout << "retornando " << endl;
+			//cout << "retornando " << endl;
 			return tmp1;
 		}
 		else {
-		//	cout << "no existe" << endl;
+			//	cout << "no existe" << endl;
 			return(new nodoDeCabecera(-1));
 		}
 	}
@@ -352,7 +352,7 @@ struct nodoLateral {
 		Filas = new listaEnlazadaHorizontal();
 		anterior = NULL;
 		siguiente = NULL;
-	
+
 	}
 
 };
@@ -380,7 +380,7 @@ struct laterales {
 
 	}
 
-	
+
 
 	void insertar(nodoLateral* valor) {
 
@@ -431,11 +431,11 @@ struct laterales {
 
 	}
 
-	
+
 
 	bool existeY(int y) {
 		if (isEmpty()) {
-		//	cout << "no existe" << endl;
+			//	cout << "no existe" << endl;
 			return false;
 
 		}
@@ -444,13 +444,13 @@ struct laterales {
 			temporal = primero;
 			while (temporal != NULL) {
 				if (temporal->y == y) {
-			//		cout << "existe" << endl;
+					//		cout << "existe" << endl;
 					return true;
 
 
 				}
 				else if (temporal->siguiente == NULL) {
-			//		cout << "no se encontro" << endl;
+					//		cout << "no se encontro" << endl;
 					return false;
 				}
 				temporal = temporal->siguiente;
@@ -465,11 +465,11 @@ struct laterales {
 			while (tmp->y != y) {
 				tmp = tmp->siguiente;
 			}
-		
+
 			return tmp;
 		}
 		else {
-		//	cout << "no existe ****" << endl;
+			//	cout << "no existe ****" << endl;
 			return(new nodoLateral(-1));
 		}
 	}
@@ -477,10 +477,10 @@ struct laterales {
 };
 
 struct matrizOrtogonal {
-	
+
 	laterales* lateral;
 	NodosCabeceras* cabeza;
-	
+
 
 	matrizOrtogonal() {
 		cabeza = new NodosCabeceras();
@@ -504,7 +504,7 @@ struct matrizOrtogonal {
 
 		CabezaTemporal = cabeza->buscarNodoCabecera(x);
 		LadoTemporal = lateral->buscarNodoLateral(y);
-		
+
 		CabezaTemporal->Columna->insertar(insercion);
 		LadoTemporal->Filas->insertar(insercion);
 		//cout << "Se inserto el valor " << numero << " en la columna " << y << " fila" << x << endl;
@@ -529,8 +529,8 @@ struct matrizOrtogonal {
 
 		cabezaTemporal->Columna->insertar(insercion);
 		ladoTemporal->Filas->insertar(insercion);
-	//	cout << "Se inserto el valor " << cadena << " en la columna " << x << " fila" << y << endl;
-//		cout << "Se inserto " << cadena << " en x " << x << " y " << y << endl;
+		//	cout << "Se inserto el valor " << cadena << " en la columna " << x << " fila" << y << endl;
+	//		cout << "Se inserto " << cadena << " en x " << x << " y " << y << endl;
 	}
 
 
@@ -541,7 +541,7 @@ struct matrizOrtogonal {
 
 			for (int g = 0; g < x; g++) {
 
-				if (p == y-1 && g==x-1) {
+				if (p == y - 1 && g == x - 1) {
 					insertar(g, p, "X");
 				}
 				else {
@@ -553,10 +553,10 @@ struct matrizOrtogonal {
 		}
 	}
 
-	
+
 	bool isEmpty() {
 
-		if (cabeza == NULL && lateral ==NULL) {
+		if (cabeza == NULL && lateral == NULL) {
 			return true;
 		}
 		else {
@@ -568,16 +568,16 @@ struct matrizOrtogonal {
 	void MostrarJugadores() {
 
 		if (!isEmpty()) {
-			
+
 			nodoDeCabecera* tmp2 = cabeza->primero;
 
-			while ( tmp2 !=NULL) {
-				cout <<"Nombre jugador: "<< tmp2->Columna->primero->nombre <<", Punteo: "<<tmp2->Columna->primero->punteo << endl;
-				tmp2 = tmp2->siguiente; 
+			while (tmp2 != NULL) {
+				cout << "Nombre jugador: " << tmp2->Columna->primero->nombre << ", Punteo: " << tmp2->Columna->primero->punteo << endl;
+				tmp2 = tmp2->siguiente;
 
 			}
 		}
-		
+
 	}
 
 	/*MOSTRAR EL TABLERO GENERADO*/
@@ -585,7 +585,7 @@ struct matrizOrtogonal {
 	void mostarTablero() {
 
 		if (!isEmpty()) {
-			
+
 			nodoDeCabecera* tmp1 = cabeza->primero;
 			nodoValor* tmp2 = cabeza->primero->Columna->primero;
 			//nodoValor* constante = c->primero->Columna->primero->abajo;
@@ -594,29 +594,29 @@ struct matrizOrtogonal {
 			tmp2 = imprimirLinea(tmp1->Columna->primero);
 			cout << "\n";
 
-			while (constante != NULL ) {
+			while (constante != NULL) {
 
 				//if (tmp2 == NULL) {
-					
-					tmp2 = imprimirLinea(constante);
-					constante = constante->abajo;
-					cout << "\n";
-					
+
+				tmp2 = imprimirLinea(constante);
+				constante = constante->abajo;
+				cout << "\n";
+
 				//}
 
 			}
-				
+
 		}
 
 	}
 
 
 	nodoValor* imprimirLinea(nodoValor* nodo) {
-		
-		while (nodo != NULL ) {
-			
+
+		while (nodo != NULL) {
+
 			if (nodo->nombre == "X") {
-				cout << nodo->nombre<< "  ";
+				cout << nodo->nombre << "  ";
 				nodo = nodo->derecha;
 			}
 			else {
@@ -629,33 +629,31 @@ struct matrizOrtogonal {
 					nodo = nodo->derecha;
 				}
 			}
-	
+
 		}
 
 		return nodo;
-		
+
 	}
 
 	void crearMatrizAleatoria(int x, int y) {
-				
+
 		int numA;
 
 		for (int p = 0; p < y; p++) {
 
 
-			for (int g = 0; g <x ; g++) {
+			for (int g = 0; g < x; g++) {
 
 				numA = numeroAleatorio();
-
 
 				if (p == y - 1 && g == x - 1) {
 					insertar(g, p, "X");
 				}
 				else {
 					insertar(g, p, numA);
-					
-				}
 
+				}
 			}
 		}
 
@@ -670,24 +668,42 @@ struct matrizOrtogonal {
 	}
 
 
-	void moverPieza(int x, int y,matrizOrtogonal* m) {
+	void moverPieza(int x, int y, matrizOrtogonal* m) {
+
+		if (!isEmpty()) {
+
+			nodoDeCabecera* tmp1 = m->cabeza->primero;
+			nodoValor* tmp2 = m->cabeza->primero->Columna->primero;
 			
-		nodoDeCabecera* cab = m->cabeza->primero;
-		nodoLateral* late = m->lateral->primero;
+			for (int i = 0; i <= y; i++) {
+				
+				
 				
 
-		/*if (ca->existe(x) && late->existe(y)) {
+				for (int j = 0; j <= x; j++) {
+					tmp2 = tmp2->derecha;
+					tmp2 = tmp2->abajo;
+				}
 
-			cout << "Jajaja si esta xd\n";
-			cout << ca->primero->Columna->primero->numero<<"\n";
-			cout << "Cambio\n";
-			ca->primero->Columna->primero->numero = 99;
-			cout << ca->primero->Columna->primero->numero << "\n";
-
-		}*/
 				
+			}
+			
+			if (tmp2->nombre == "X") {
+				cout << "hallado" << tmp2->nombre;
+			}
+			else {
+				cout << "hallado" << tmp2->numero;
+			}
+
+			
+
+
+			
+
+		}
+
 
 	}
-	
+
 };
 

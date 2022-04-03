@@ -1,29 +1,5 @@
-
-
-
-
-/*
-int main() {
-	
-
-	
-
-	matrizOrtogonal* matriz;
-	matriz = new matrizOrtogonal();
-	
-	matriz->llenar(2, 2);
-	
-	//buscar en la matriz
-	//int dato = matriz->l->busqueda(0)->Filas->primero->abajo->derecha->dato;
-	
-
-	return true;
-
-} */
-
 #include "matrizOrtogonal.h"
 #include "crearMatrizOrtogonal.h"
-
 
 
 int opcion;
@@ -73,12 +49,24 @@ int main() {
 
 			if (llenado == 1) {
 				
+				int moverX;
+				int moverY;
+
 				cout << "Ingresa el alto del tablero" << endl;
 				cin >> alto;
 				cout << "Ingresa el ancho del tablero" << endl;
 				cin >> ancho;
+				cout << "\n";
 				matrizManual = crearMatrizManual(alto, ancho);
-				mover(0,0, matrizManual);
+				
+				cout << "Posicion X a mover: "; 
+				cin >> moverX;
+
+				cout << "Posicion Y a mover: ";
+				cin >> moverY;
+				cout << "\n";
+				mover(moverX,moverY, matrizManual);
+				//mover(0,1, matrizManual);
 
 			}
 			else if (llenado == 2) {
@@ -89,8 +77,7 @@ int main() {
 				matrizAleatoria = crearMatrizAleatoria(alto,ancho);
 			}
 
-			
-						
+									
 		}
 		else if (opcion == 2) {
 			cout << "\n--------------------------- " << endl;

@@ -669,35 +669,31 @@ struct matrizOrtogonal {
 
 
 	void moverPieza(int x, int y, matrizOrtogonal* m) {
+		int ejex = x - 1;
+		int ejey = y - 1;
 
 		if (!isEmpty()) {
 
 			nodoDeCabecera* tmp1 = m->cabeza->primero;
 			nodoValor* tmp2 = m->cabeza->primero->Columna->primero;
 			
-			for (int i = 0; i <= y; i++) {
+			for (int i = 0; i < ejey; i++) {
 				
-				
-				
+				tmp2 = tmp2->derecha;
+								
+			}
 
-				for (int j = 0; j <= x; j++) {
-					tmp2 = tmp2->derecha;
-					tmp2 = tmp2->abajo;
-				}
+			for (int j = 0; j < ejex; j++) {
+				tmp2 = tmp2->abajo;
 
-				
 			}
 			
 			if (tmp2->nombre == "X") {
-				cout << "hallado" << tmp2->nombre;
+				cout << "hallado" << tmp2->nombre<<"\n\n";
 			}
 			else {
-				cout << "hallado" << tmp2->numero;
+				cout << "hallado" << tmp2->numero << "\n\n";
 			}
-
-			
-
-
 			
 
 		}

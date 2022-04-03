@@ -38,7 +38,7 @@ matrizOrtogonal* crearMatrizManual(int alto, int ancho) {
 
 			for (int g = 0; g < ancho; g++) {
 
-				cout << "Ingrese el valor "<<p<<" ancho"<<g<<"\n";
+				cout << "Ingrese el valor de  x: "<<(p+1)<<", y: "<<(g+1)<<"\n";
 				cin >> valor;
 
 				if (p == alto - 1 && g == ancho - 1) {
@@ -72,4 +72,3 @@ matrizOrtogonal* crearMatrizAleatoria(int alto, int ancho) {
 void mover(int x, int y,matrizOrtogonal* m) {
 	m->moverPieza(x,y,m);
 }
-

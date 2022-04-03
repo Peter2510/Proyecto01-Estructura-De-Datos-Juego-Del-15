@@ -58,15 +58,21 @@ int main() {
 				cin >> ancho;
 				cout << "\n";
 				matrizManual = crearMatrizManual(alto, ancho);
-				
-				cout << "Posicion X a mover: "; 
-				cin >> moverX;
-
-				cout << "Posicion Y a mover: ";
-				cin >> moverY;
 				cout << "\n";
-				mover(moverX,moverY, matrizManual);
-				//mover(0,1, matrizManual);
+				
+				do {
+					cout << "Posicion X a mover: ";
+					cin >> moverX;
+
+					cout << "Posicion Y a mover: ";
+					cin >> moverY;
+					
+					mover(moverX, moverY, matrizManual);
+
+				} while (moverX!=88);
+
+				
+				
 
 			}
 			else if (llenado == 2) {

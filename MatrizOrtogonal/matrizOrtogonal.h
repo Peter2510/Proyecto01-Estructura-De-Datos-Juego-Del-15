@@ -12,6 +12,7 @@ struct nodoValor {
 
 	int numero, x, y, punteo = 0;
 	string nombre;
+	double tiempoPartida;
 
 	//Apuntadores entre si
 	nodoValor* arriba;
@@ -46,6 +47,24 @@ struct nodoValor {
 		derecha = NULL;
 
 	}
+
+	//constructor del nodo que tiene los valores de los jugadores
+	nodoValor(string nombre, int eje_x, int eje_y,int punteo, double tiempoPartida) {
+
+		this->nombre = nombre;
+		this->x = eje_x;
+		this->y = eje_y;
+		this->punteo = punteo;
+		this->tiempoPartida = tiempoPartida;
+		arriba = NULL;
+		abajo = NULL;
+		izquierda = NULL;
+		derecha = NULL;
+
+	}
+	
+
+	
 };
 
 /* Lista enlazada vertical */
@@ -511,9 +530,33 @@ struct matrizOrtogonal {
 		//	cout << "Se inserto " << numero << " en x " << y << " y " << x << endl;
 	}
 
+	
+
 	void insertar(int x, int y, string cadena) {
 		nodoValor* insercion;
 		insercion = new nodoValor(cadena, x, y);
+
+		if (cabeza->existeX(x) == false) {
+			cabeza->insertar(new nodoDeCabecera(x));
+		}if (lateral->existeY(y) == false) {
+			lateral->insertar(new nodoLateral(y));
+			//	cout << "Se inserto " << cadena << " en x " << y << " y " << x << endl;
+		}
+
+		nodoDeCabecera* cabezaTemporal;
+		nodoLateral* ladoTemporal;
+		cabezaTemporal = cabeza->buscarNodoCabecera(x);
+		ladoTemporal = lateral->buscarNodoLateral(y);
+
+		cabezaTemporal->Columna->insertar(insercion);
+		ladoTemporal->Filas->insertar(insercion);
+		//	cout << "Se inserto el valor " << cadena << " en la columna " << x << " fila" << y << endl;
+	//		cout << "Se inserto " << cadena << " en x " << x << " y " << y << endl;
+	}
+
+	void insertarJugador(int x, int y, string cadena,int punteo, double tiempoPartida) {
+		nodoValor* insercion;
+		insercion = new nodoValor(cadena, x, y,punteo,tiempoPartida);
 
 		if (cabeza->existeX(x) == false) {
 			cabeza->insertar(new nodoDeCabecera(x));
@@ -572,7 +615,7 @@ struct matrizOrtogonal {
 			nodoDeCabecera* tmp2 = cabeza->primero;
 
 			while (tmp2 != NULL) {
-				cout << "Nombre jugador: " << tmp2->Columna->primero->nombre << ", Punteo: " << tmp2->Columna->primero->punteo << endl;
+				cout << "Nombre jugador: " << tmp2->Columna->primero->nombre << ", Punteo: " << tmp2->Columna->primero->punteo<< " , Tiempo de la partida: " << tmp2->Columna->primero->tiempoPartida<<" segundos" << endl;
 				tmp2 = tmp2->siguiente;
 
 			}

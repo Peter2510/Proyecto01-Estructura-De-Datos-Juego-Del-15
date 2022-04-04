@@ -12,21 +12,20 @@ void crearMatrizOrtogonal(int alto, int ancho) {
 	
 }
 
-/*void eliminarMatriz() {
-	delete matriz;
-}*/
+/*SE CREA UN JUGADOR*/
 
-matrizOrtogonal* crearJugador(int x,int y,string nombre) {
+matrizOrtogonal* crearJugador(int x,int y,string nombre,int punteo,double tiempoPartida) {
 	
 	matrizOrtogonal* matriz2;
 	
 	matriz2 = new matrizOrtogonal();
 	
-	matriz2->insertar(x,y,nombre);	
+	matriz2->insertarJugador(x,y,nombre,punteo,tiempoPartida);	
 
 	return matriz2;
 }
 
+/*SE CREA LA MATRIZ MANUALMENTE*/
 matrizOrtogonal* crearMatrizManual(int alto, int ancho) {
 	
 	matrizOrtogonal* matriz;
@@ -56,7 +55,7 @@ matrizOrtogonal* crearMatrizManual(int alto, int ancho) {
 	return matriz;
 }
 
-
+/*CREA LA MATRIZ ALEATORIAMENTE*/
 matrizOrtogonal* crearMatrizAleatoria(int alto, int ancho) {
 
 	matrizOrtogonal* matriz;
@@ -68,7 +67,7 @@ matrizOrtogonal* crearMatrizAleatoria(int alto, int ancho) {
 	return matriz;
 
 }
-
+/*PARA ENCONTRAR UN NUMERO*/
 void mover(int x, int y,string opcion, matrizOrtogonal* m) {
 	
 	nodoValor* valorAMover;
@@ -78,21 +77,24 @@ void mover(int x, int y,string opcion, matrizOrtogonal* m) {
 	tmp = m->moverPieza(x, y, m);
 	
 	
-
+	cout <<"\n";
 	cout << "Numero a mover: " << valorAMover->numero<<"\n";
 
 	// SI X ESTA ABAJO
 	if (opcion == "abajo") {
 		
 		if (valorAMover->abajo->nombre == "X") {
-			cout << "Si cambio";
+			
+			cout << "Se realizo el cambio";
 			valorAMover->nombre = "X";
 			valorAMover->abajo->numero = tmp->numero;
 			valorAMover->abajo->nombre = "a";
+			
 			m->mostarTablero();
 		}
 		else {
-			cout << "NO cambio";
+			cout << "\nNO es posible realizar el cambio\n";
+			m->mostarTablero();
 		}
 
 	}
@@ -100,31 +102,57 @@ void mover(int x, int y,string opcion, matrizOrtogonal* m) {
 	else if (opcion == "arriba") {
 		
 		if (valorAMover->arriba->nombre == "X") {
-			cout << "Si cambio";
+			
+			cout << "Se realizo el cambio";
+			valorAMover->nombre = "X";
+			valorAMover->arriba->numero = tmp->numero;
+			valorAMover->arriba->nombre = "a";
+
+
+			m->mostarTablero();
 		}
 		else {
-			cout << "NO cambio";
+			cout << "\nNO es posible realizar el cambio\n";
+			m->mostarTablero();
 		}
 	
 	// SI X ESTA A LA DERECHA
 	}else if(opcion == "derecha") {
 	
 		if (valorAMover->derecha->nombre == "X") {
-			cout << "Si cambio";
+			cout << "Se realizo el cambio";
+			
+			valorAMover->nombre = "X";
+			valorAMover->derecha->numero = tmp->numero;
+			valorAMover->derecha->nombre = "a";
+			
+			m->mostarTablero();
 		}
 		else {
-			cout << "NO cambio";
+			cout << "\nNO es posible realizar el cambio\n";
+			m->mostarTablero();
 		}
 	}
-	// SI X ESTA A LA DERECHA
+	// SI X ESTA A LA IZQUIERDA
 	else if (opcion == "izquierda") {
 
 		if (valorAMover->izquierda->nombre == "X") {
-			cout << "Si cambio";
+			cout << "Se realizo el cambio";
+			valorAMover->nombre = "X";
+			valorAMover->izquierda->numero = tmp->numero;
+			valorAMover->izquierda->nombre = "a";
+
+			m->mostarTablero();
 		}
 		else {
-			cout << "NO cambio";
+			cout << "\nNO es posible realizar el cambio\n";
+			m->mostarTablero();
 		}
 
 	}
+
+}
+/*SE MUESTRA EL TABLERO*/
+void mostrarElTablero(matrizOrtogonal* m) {
+	m->mostarTablero();
 }

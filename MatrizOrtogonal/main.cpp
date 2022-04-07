@@ -180,7 +180,9 @@ int main() {
 				delete matrizAleatoria;
 			}
 			else if (llenado == 3) {
+			
 			cout << "Se carga el archivo\n";
+
 			}
 			
 									

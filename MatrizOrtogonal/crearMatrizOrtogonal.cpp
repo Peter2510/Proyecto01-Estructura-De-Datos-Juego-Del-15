@@ -1,5 +1,8 @@
 #include <iostream>
 #include <time.h>
+#include <string.h>
+#include <fstream>
+#include <stdlib.h>
 #include "matrizOrtogonal.h"
 using namespace std;
 
@@ -167,3 +170,4 @@ int obtenerPunteo(int alto,int ancho,matrizOrtogonal* m) {
 	punteo = m->ordenamiento(alto, ancho,m);
 	return punteo;
 }
+

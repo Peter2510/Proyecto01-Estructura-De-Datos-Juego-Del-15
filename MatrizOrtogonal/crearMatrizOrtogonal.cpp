@@ -90,6 +90,8 @@ void mover(int x, int y,string opcion, matrizOrtogonal* m) {
 			valorAMover->abajo->numero = tmp->numero;
 			valorAMover->abajo->nombre = "a";
 			
+			
+			
 			m->mostarTablero();
 		}
 		else {
@@ -107,7 +109,8 @@ void mover(int x, int y,string opcion, matrizOrtogonal* m) {
 			valorAMover->nombre = "X";
 			valorAMover->arriba->numero = tmp->numero;
 			valorAMover->arriba->nombre = "a";
-
+			
+			
 
 			m->mostarTablero();
 		}
@@ -126,6 +129,7 @@ void mover(int x, int y,string opcion, matrizOrtogonal* m) {
 			valorAMover->derecha->numero = tmp->numero;
 			valorAMover->derecha->nombre = "a";
 			
+			
 			m->mostarTablero();
 		}
 		else {
@@ -141,7 +145,8 @@ void mover(int x, int y,string opcion, matrizOrtogonal* m) {
 			valorAMover->nombre = "X";
 			valorAMover->izquierda->numero = tmp->numero;
 			valorAMover->izquierda->nombre = "a";
-
+			
+			
 			m->mostarTablero();
 		}
 		else {
@@ -155,4 +160,10 @@ void mover(int x, int y,string opcion, matrizOrtogonal* m) {
 /*SE MUESTRA EL TABLERO*/
 void mostrarElTablero(matrizOrtogonal* m) {
 	m->mostarTablero();
+}
+
+int obtenerPunteo(int alto,int ancho,matrizOrtogonal* m) {
+	int punteo;
+	punteo = m->ordenamiento(alto, ancho,m);
+	return punteo;
 }

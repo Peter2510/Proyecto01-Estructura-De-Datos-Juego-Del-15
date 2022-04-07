@@ -746,5 +746,90 @@ struct matrizOrtogonal {
 		return tmp2;
 	}
 
+	int ordenamiento(int alto, int ancho,matrizOrtogonal* m) {
+		
+		int x = ancho+1, y = alto+1;
+		int entrada[1000], tam = 0;
+		
+		
+
+		nodoValor* n;
+		
+		nodoValor* c;
+
+			// para llenar los espacios
+			for (int i = 1; i < x; i++) {
+				for (int j = 1; j < y; j++) {
+					n= moverPieza(i, j, m);
+					if (n->nombre != "X") {
+						entrada[tam] = n->numero;
+						//cout << "Agregue: "<<n->numero<<" pos " <<tam<< endl;
+						tam++;
+					}
+					else {
+						//cout << n->nombre << endl;												
+					}
+					
+					//cout << "i: " << i << " j: "<<j<<endl;
+
+				}
+			}
+
+			//Para comparar los espacios
+			
+			
+			int i, j, aux;
+
+			
+			// metodo burbuja
+			for (i = 0; i < tam; i++) {
+				for (j = 0; j < tam; j++) {
+					if (entrada[j] > entrada[j + 1]) {
+						aux = entrada[j];
+						entrada[j] = entrada[j + 1];
+						entrada[j + 1] = aux;
+				}
+				}
+
+			}
+
+			
+			//for (int i = 1; i < tam+1; i++) {
+			//	cout << "Numero posicion " << i << "  " <<entrada[i]<<endl;
+			//}
+
+			// comprar tabla con ordenamiento 
+			int pos = 1;
+			int punteo = 0;
+			for (int i = 1; i < x; i++) {
+				for (int j = 1; j < y; j++) {
+					c = moverPieza(i, j, m);
+					if (c->nombre != "X") {
+
+						if (c->numero == entrada[pos]) {
+							punteo +=2;;
+						//cout << "PUnteo +2";
+						}
+						
+						//cout << "comparando nodo " << c->numero << " con aarya " << entrada[pos] << endl;
+						//cout << "Agregue: "<<n->numero<<" pos " <<tam<< endl;
+
+						pos++;
+					}
+					else {
+						//cout << n->nombre << endl;												
+					}
+
+					//cout << "i: " << i << " j: "<<j<<endl;
+
+				}
+			}
+
+			cout << "\n\nPunteo obtenido = "<<punteo<<endl;
+			return punteo;
+	}
+
+
+
 };
 

@@ -36,9 +36,10 @@ int main() {
 			
 			int llenado;
 
-			cout << "Ingresa el numero que corresponda\n";
+			cout << "Selecciona la forma de llenar el tablero\n";
 			cout << "1. Llenar de forma manual\n";
 			cout << "2. Llenar de forma aleatoria\n";
+			cout << "3. Carga de archivo\n";
 			
 			cin >> llenado;
 			cout << "\n";
@@ -52,7 +53,7 @@ int main() {
 				string opcion;
 				string continuar = "si";
 				int punteo = 0;
-
+				int tiros = 0;
 				unsigned t0, t1;
 
 				t0 = clock();
@@ -74,7 +75,7 @@ int main() {
 					cout << "Posicion columna a mover: ";
 					cin >> moverY;
 					
-					cout << "\n\nLos movimientos pueden ser: arriba, abajo, derecha e izquierda\n";
+					cout << "\n\nLos movimientos pueden ser: arriba, abajo, derecha o izquierda\n";
 					cout << "Movimiento a realizar: ";
 					cin >> opcion;
 					
@@ -85,9 +86,11 @@ int main() {
 					cout << "no\n";
 					cin >> continuar;
 					mostrarElTablero(matrizManual);
-
+					tiros++;
 				} while (continuar != "no");
 				
+				punteo = obtenerPunteo(alto, ancho, matrizManual);
+				cout << "Movimientos realizados = " << tiros;
 				//tiempo de partida
 				t1 = clock();
 				double time = (double(t1 - t0) / CLOCKS_PER_SEC);
@@ -96,11 +99,11 @@ int main() {
 
 				// se crea el jugador
 				if (contadorJugadorX == 0) {
-					matrizNombres = crearJugador(0, contadorJugadorX, nombre,punteo,time);
+					matrizNombres = crearJugador(contadorJugadorX,0 , nombre,punteo,time);
 					contadorJugadorX++;
 				}
 				else {
-					matrizNombres->insertarJugador(0, contadorJugadorX, nombre,punteo,time);
+					matrizNombres->insertarJugador(contadorJugadorX, 0, nombre,punteo,time);
 					contadorJugadorX++;
 				}
 
@@ -114,7 +117,8 @@ int main() {
 				string opcion;
 				string continuar = "si";
 				int punteo = 0;
-				
+				int tiros = 0;
+
 				unsigned t0, t1;
 				
 				t0 = clock();
@@ -136,7 +140,7 @@ int main() {
 					cout << "Posicion columna a mover: ";
 					cin >> moverY;
 										
-					cout << "\n\nLos movimientos pueden ser: arriba, abajo, derecha e izquierda\n";
+					cout << "\n\nLos movimientos pueden ser: arriba, abajo, derecha o izquierda\n";
 					cout << "Movimiento a realizar: ";
 					cin >> opcion;
 
@@ -150,23 +154,35 @@ int main() {
 
 				} while (continuar != "no");
 
+				//VER EL ORDEN
+				cout << "\n";
+				
+				cout << "Movimientos realizados = " << tiros;
+				
+				punteo = obtenerPunteo(alto,ancho,matrizAleatoria);
+
 				//calcular tiempo
 				t1 = clock();
 				double time = (double(t1 - t0) / CLOCKS_PER_SEC);
 				cout << "\nTiempo de partida : " << time << " segundos" << endl;
-				delete matrizAleatoria;
+				
 				// se crea el jugador
 				if (contadorJugadorX == 0) {
-					matrizNombres = crearJugador(0, contadorJugadorX, nombre,punteo,time);
+					matrizNombres = crearJugador(contadorJugadorX,0 , nombre,punteo,time);
 					contadorJugadorX++;
+					
 				}
 				else {
-					matrizNombres->insertarJugador(0, contadorJugadorX, nombre,punteo,time);
+					
+					matrizNombres->insertarJugador(contadorJugadorX,0 , nombre,punteo,time);
 					contadorJugadorX++;
 				}
-
+				delete matrizAleatoria;
 			}
-
+			else if (llenado == 3) {
+			cout << "Se carga el archivo\n";
+			}
+			
 									
 		}
 		else if (opcion == 2) {
